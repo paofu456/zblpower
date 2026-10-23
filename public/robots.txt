@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://zblpower-web.fanfu749.workers.dev/sitemap-index.xml
+Sitemap: https://test.fuliang.online/sitemap-index.xml

@@ -1,7 +1,7 @@
 export const siteConfig = {
   language: "zh-CN",
   locale: "zh_CN",
-  siteUrl: "https://zblpower-web.fanfu749.workers.dev" as string | undefined,
+  siteUrl: "https://test.fuliang.online" as string | undefined,
   siteMode: "production" as "local" | "production",
   contentStatus: "ready" as "demo" | "draft" | "ready",
   navigation: [
