@@ -3,7 +3,7 @@ export const siteConfig = {
   locale: "zh_CN",
   siteUrl: undefined as string | undefined,
   siteMode: "local" as "local" | "production",
-  contentStatus: "draft" as "demo" | "draft" | "ready",
+  contentStatus: "ready" as "demo" | "draft" | "ready",
   navigation: [
     { label: "首页", href: "/" },
     { label: "产品中心", href: "/products/" },
