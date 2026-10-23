@@ -57,6 +57,69 @@ const mobileHref = company.mobile.replace(/[^\d+]/g, "");
     </Container>
   </section>
 
+  <section class="pb-20 sm:pb-24">
+    <Container>
+      <div class="grid gap-10 rounded-[var(--radius-card)] border border-[var(--color-line)] bg-white p-8 sm:p-10 lg:grid-cols-[.95fr_1.05fr] lg:gap-16">
+        <div>
+          <p class="eyebrow">询盘表单</p>
+          <h2 class="mt-4 text-3xl font-extrabold leading-tight">告诉我们设备类型与预计用量</h2>
+          <p class="mt-4 leading-8 text-[var(--color-muted)]">填写后按工作时间回复选型建议与报价。产品型号与电芯参数确认后可提供正式报价单。</p>
+          <div class="mt-7 rounded-2xl border border-[var(--color-accent)]/35 bg-[var(--color-surface)] p-4 text-sm leading-7 text-[var(--color-ink)]">
+            <strong>演示表单：</strong>当前版本只演示填写与校验，提交后<strong>不会发送</strong>、<strong>不会保存</strong>任何内容。正式收件需接入邮件服务后再启用。
+          </div>
+          <div class="mt-8 border-t border-[var(--color-line)] pt-6 text-sm leading-8 text-[var(--color-muted)]">
+            <p class="font-bold text-[var(--color-ink)]">也可以直接联系</p>
+            <p class="mt-1">
+              固话 <a class="font-bold text-[var(--color-primary)]" href={`tel:${company.phone.replace(/[^\d+]/g, "")}`}>{company.phone}</a>
+              ｜手机 <a class="font-bold text-[var(--color-primary)]" href={`tel:${company.mobile.replace(/[^\d+]/g, "")}`}>{company.mobile}</a>
+            </p>
+            <p class="mt-1 break-all">
+              邮箱 <a class="font-bold text-[var(--color-primary)]" href={`mailto:${company.email}`}>{company.email}</a>
+            </p>
+          </div>
+        </div>
+
+        <div>
+          <form id="inquiry-form" class="grid gap-5" method="post" action="">
+            <div class="grid gap-2">
+              <label for="company-name" class="text-sm font-bold">公司名称 <span class="text-[var(--color-primary)]">*</span></label>
+              <input id="company-name" name="company" type="text" required autocomplete="organization"
+                class="min-h-12 rounded-xl border border-[var(--color-line)] bg-[var(--color-surface)] px-4 text-[var(--color-ink)] outline-none focus:border-[var(--color-primary)]" />
+            </div>
+            <div class="grid gap-2 sm:grid-cols-2">
+              <div class="grid gap-2">
+                <label for="contact-name" class="text-sm font-bold">联系人 <span class="text-[var(--color-primary)]">*</span></label>
+                <input id="contact-name" name="name" type="text" required autocomplete="name"
+                  class="min-h-12 rounded-xl border border-[var(--color-line)] bg-[var(--color-surface)] px-4 text-[var(--color-ink)] outline-none focus:border-[var(--color-primary)]" />
+              </div>
+              <div class="grid gap-2">
+                <label for="contact-way" class="text-sm font-bold">手机或邮箱 <span class="text-[var(--color-primary)]">*</span></label>
+                <input id="contact-way" name="contact" type="text" required
+                  class="min-h-12 rounded-xl border border-[var(--color-line)] bg-[var(--color-surface)] px-4 text-[var(--color-ink)] outline-none focus:border-[var(--color-primary)]" />
+              </div>
+            </div>
+            <div class="grid gap-2">
+              <label for="inquiry-note" class="text-sm font-bold">需求说明</label>
+              <textarea id="inquiry-note" name="note" rows="4" placeholder="设备类型、电压容量、预计月用量等"
+                class="rounded-xl border border-[var(--color-line)] bg-[var(--color-surface)] px-4 py-3 text-[var(--color-ink)] outline-none focus:border-[var(--color-primary)]"></textarea>
+            </div>
+            <div class="flex flex-wrap items-center gap-4">
+              <button type="submit" class="inline-flex min-h-12 items-center justify-center rounded-full bg-[var(--color-primary)] px-6 py-3 text-sm font-bold text-white transition-colors hover:bg-[var(--color-primary-dark)]">
+                提交询盘（演示）
+              </button>
+              <p class="text-xs leading-6 text-[var(--color-muted)]">带 * 为必填项</p>
+            </div>
+          </form>
+
+          <div id="form-status" role="status" aria-live="polite" hidden
+            class="mt-6 rounded-2xl border border-[var(--color-primary)]/30 bg-[var(--color-surface)] p-5 text-sm leading-7 text-[var(--color-ink)]">
+            <strong>演示模式：</strong>表单校验已通过，但内容<strong>没有发送，也没有保存</strong>。如需真实询盘，请直接致电 0769-82960591 或发送邮件。
+          </div>
+        </div>
+      </div>
+    </Container>
+  </section>
+
   <section class="pb-24 sm:pb-32">
     <Container>
       <div class="rounded-[var(--radius-card)] border border-[var(--color-line)] bg-white p-8 sm:p-10 lg:flex lg:items-center lg:justify-between lg:gap-12">
@@ -72,3 +135,21 @@ const mobileHref = company.mobile.replace(/[^\d+]/g, "");
     </Container>
   </section>
 </BaseLayout>
+
+<script>
+  const form = document.getElementById("inquiry-form") as HTMLFormElement | null;
+  const status = document.getElementById("form-status");
+
+  form?.addEventListener("submit", (event) => {
+    event.preventDefault();
+    if (!form.checkValidity()) {
+      form.reportValidity();
+      return;
+    }
+    if (status) {
+      status.hidden = false;
+      status.setAttribute("tabindex", "-1");
+      status.focus();
+    }
+  });
+</script>
