@@ -1,2 +1,4 @@
 User-agent: *
-Disallow: /
+Allow: /
+
+Sitemap: https://zblpower-web.fanfu749.workers.dev/sitemap-index.xml

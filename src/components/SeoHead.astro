@@ -1,4 +1,5 @@
 ---
+import company from "../data/company.json";
 import { siteConfig } from "../../site.config";
 
 interface Props {
@@ -12,6 +13,43 @@ const { title, description, image, noindex = false } = Astro.props;
 const shouldIndex = siteConfig.siteMode === "production" && !noindex;
 const canonical = siteConfig.siteUrl ? new URL(Astro.url.pathname, siteConfig.siteUrl).toString() : undefined;
 const socialImage = image && siteConfig.siteUrl ? new URL(image, siteConfig.siteUrl).toString() : undefined;
+const logoUrl = siteConfig.siteUrl ? new URL(company.logo, siteConfig.siteUrl).toString() : undefined;
+const alibabaUrl = "alibaba" in company ? (company as { alibaba?: string }).alibaba : undefined;
+
+const structuredData = shouldIndex && siteConfig.siteUrl
+  ? {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": `${siteConfig.siteUrl}#organization`,
+          name: company.name,
+          alternateName: "ZBPOWER",
+          url: siteConfig.siteUrl,
+          logo: logoUrl,
+          foundingDate: "2012",
+          email: company.email,
+          telephone: "+86-769-82960591",
+          address: {
+            "@type": "PostalAddress",
+            streetAddress: "林村新鸿路 20 号新太阳城 117 栋",
+            addressLocality: "东莞市",
+            addressRegion: "广东省",
+            addressCountry: "CN",
+          },
+          ...(alibabaUrl ? { sameAs: [alibabaUrl] } : {}),
+        },
+        {
+          "@type": "WebSite",
+          "@id": `${siteConfig.siteUrl}#website`,
+          url: siteConfig.siteUrl,
+          name: company.name,
+          inLanguage: siteConfig.language,
+          publisher: { "@id": `${siteConfig.siteUrl}#organization` },
+        },
+      ],
+    }
+  : null;
 ---
 
 <title>{title}</title>
@@ -19,9 +57,11 @@ const socialImage = image && siteConfig.siteUrl ? new URL(image, siteConfig.site
 <meta name="robots" content={shouldIndex ? "index,follow" : "noindex,nofollow"} />
 {canonical && <link rel="canonical" href={canonical} />}
 <meta property="og:type" content="website" />
+<meta property="og:site_name" content={company.name} />
 <meta property="og:locale" content={siteConfig.locale} />
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
 {canonical && <meta property="og:url" content={canonical} />}
 {socialImage && <meta property="og:image" content={socialImage} />}
 <meta name="twitter:card" content={socialImage ? "summary_large_image" : "summary"} />
+{structuredData && <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />}
