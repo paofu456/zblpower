@@ -1,0 +1,32 @@
+---
+import ProductCard from "../../components/product/ProductCard.astro";
+import Container from "../../components/ui/Container.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { getPublishedProducts } from "../../lib/products";
+import { makePageTitle } from "../../lib/seo";
+
+const products = await getPublishedProducts();
+---
+
+<BaseLayout
+  title={makePageTitle("产品中心")}
+  description="智博力产品中心：动力锂电池、铅改锂电池与家用储能电池，覆盖电动自行车、电动摩托车、三轮车、UPS 后备电源与户用储能等场景。"
+>
+  <section class="border-b border-[var(--color-line)] bg-white py-20 sm:py-24">
+    <Container>
+      <p class="eyebrow mb-5">产品中心</p>
+      <h1 class="max-w-4xl text-4xl font-extrabold leading-[1.14] sm:text-6xl">三大业务板块，按应用场景选型</h1>
+      <p class="mt-7 max-w-3xl text-xl leading-9 text-[var(--color-muted)]">
+        动力锂电、铅改锂电池与家用储能电池分别面向不同设备类型。具体型号、容量与电压参数请与我们确认后提供。
+      </p>
+    </Container>
+  </section>
+
+  <section class="py-20 sm:py-24">
+    <Container>
+      <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {products.map((product) => <ProductCard product={product} />)}
+      </div>
+    </Container>
+  </section>
+</BaseLayout>

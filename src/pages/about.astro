@@ -1,0 +1,118 @@
+---
+import ContactCta from "../components/sections/ContactCta.astro";
+import Container from "../components/ui/Container.astro";
+import company from "../data/company.json";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { makePageTitle } from "../lib/seo";
+
+const milestones = [
+  {
+    period: "2011—2012",
+    title: "起步孵化",
+    body: "从事镍氢、镍铬及小数码锂电池、玩具电池贸易；智博力成立，开始生产数码锂电池及电动工具锂电池组。",
+  },
+  {
+    period: "2013—2014",
+    title: "市场转型",
+    body: "全面转型生产电动自行车锂电池、电动轮椅锂电池、电动摩托车锂电池。",
+  },
+  {
+    period: "2015—2019",
+    title: "产能跃升",
+    body: "迁址并引入自动分选机、综合测试仪等生产设备，通过 ISO 国际质量管理体系认证；研发三角包锂电池并申请 2 项外壳专利，批量投产 12V 磷酸铁锂电池（铅改锂）并申请 2 项外壳专利。",
+  },
+  {
+    period: "2019—2020",
+    title: "技术研发",
+    body: "成立东莞市智博力科技有限公司，工厂迁址东莞塘厦，成立实验室并新增老化设备及实验测试仪器，进一步提升产品可靠性。",
+  },
+  {
+    period: "2021—至今",
+    title: "多元化发展",
+    body: "2026 年 5 月落户东莞塘厦花园式独栋生产基地，立足东莞制造中心，同步构筑覆盖亚洲、欧洲的全球化服务网络。",
+  },
+];
+
+const honors = ["国家高新技术企业", "专精特新“小巨人”", "ISO9001 质量认证", "技术专利 24 项", "创新企业"];
+---
+
+<BaseLayout
+  title={makePageTitle("关于我们")}
+  description={`${company.name}始创于 2012 年，专注锂电池研发制造，覆盖动力锂电、铅改锂电池与家用储能三大板块。`}
+  image="/media/company/automation-line.webp"
+>
+  <section class="border-b border-[var(--color-line)] bg-white py-20 sm:py-24">
+    <Container>
+      <p class="eyebrow mb-5">关于智博力</p>
+      <h1 class="max-w-4xl text-4xl font-extrabold leading-[1.14] sm:text-6xl">
+        力有智，行无疆
+      </h1>
+      <p class="mt-7 max-w-3xl text-xl leading-9 text-[var(--color-muted)]">{company.description}</p>
+    </Container>
+  </section>
+
+  <section class="py-24 sm:py-32">
+    <Container class="grid items-start gap-14 lg:grid-cols-[.95fr_1.05fr] lg:gap-20">
+      <img
+        src="/media/company/automation-line.webp"
+        alt="智博力车间的锂电池自动化装配设备与产线工位"
+        width="1200"
+        height="629"
+        class="w-full rounded-[var(--radius-card)] shadow-[var(--shadow-card)]"
+      />
+      <div>
+        <p class="eyebrow mb-4">公司简介</p>
+        <h2 class="text-3xl font-extrabold leading-tight sm:text-4xl">从数码电池起步，走到动力与储能</h2>
+        <div class="prose-site mt-7">
+          <p>深圳市智博力科技有限公司始创于 2012 年，是一家专注锂电池研发制造的国家级高新技术企业。公司打造动力锂电池、铅改锂电池、家用储能锂电池三大核心业务板块。</p>
+          <p>公司注册资金 1000+ 万元，制造经验 14 年，厂房面积 14000+ ㎡，拥有 20+ 人的技术团队，产品已服务全球 20 多个国家和地区的客户。</p>
+          <p>多元产品矩阵精准适配全球差异化能源需求，从短途出行到家庭储能，从后备电源到太阳能离网储能系统，输出可靠的锂电解决方案。</p>
+        </div>
+        <dl class="mt-9 grid gap-5 sm:grid-cols-2">
+          <div class="rounded-2xl border border-[var(--color-line)] bg-white p-6">
+            <dt class="text-xs font-bold tracking-[0.14em] text-[var(--color-muted)]">成立时间</dt>
+            <dd class="mt-2 text-lg font-extrabold">{company.founded}</dd>
+          </div>
+          <div class="rounded-2xl border border-[var(--color-line)] bg-white p-6">
+            <dt class="text-xs font-bold tracking-[0.14em] text-[var(--color-muted)]">生产基地</dt>
+            <dd class="mt-2 text-lg font-extrabold">{company.location}</dd>
+          </div>
+        </dl>
+      </div>
+    </Container>
+  </section>
+
+  <section class="border-y border-[var(--color-line)] bg-white py-24 sm:py-32">
+    <Container>
+      <p class="eyebrow mb-4">发展历程</p>
+      <h2 class="text-3xl font-extrabold leading-tight sm:text-5xl">从贸易到制造，再到全球化服务</h2>
+      <ol class="mt-12 space-y-8 border-l border-[var(--color-line)] pl-8">
+        {milestones.map((item) => (
+          <li class="relative">
+            <span class="absolute -left-[2.15rem] top-1.5 h-2.5 w-2.5 rounded-full bg-[var(--color-accent)]" aria-hidden="true"></span>
+            <p class="text-sm font-extrabold tracking-[0.1em] text-[var(--color-primary)]">{item.period}</p>
+            <h3 class="mt-1 text-xl font-extrabold">{item.title}</h3>
+            <p class="mt-2 max-w-3xl leading-8 text-[var(--color-muted)]">{item.body}</p>
+          </li>
+        ))}
+      </ol>
+    </Container>
+  </section>
+
+  <section class="py-24 sm:py-32">
+    <Container>
+      <p class="eyebrow mb-4">荣誉与资质</p>
+      <h2 class="text-3xl font-extrabold leading-tight sm:text-4xl">研发与品质的第三方认可</h2>
+      <ul class="mt-8 flex flex-wrap gap-3">
+        {honors.map((item) => (
+          <li class="rounded-full border border-[var(--color-line)] bg-white px-5 py-2.5 text-sm font-bold text-[var(--color-ink)]">{item}</li>
+        ))}
+      </ul>
+      <p class="mt-6 max-w-3xl text-sm leading-7 text-[var(--color-muted)]">
+        公司累计申请专利 24 项，发明专利占比超过 60%，年营收的 25% 投入研发。证书编号与有效期以客户提供的原件为准。
+      </p>
+    </Container>
+  </section>
+
+  <ContactCta />
+</BaseLayout>

@@ -1,0 +1,55 @@
+---
+import Button from "../ui/Button.astro";
+import Container from "../ui/Container.astro";
+---
+
+<section class="border-b border-[var(--color-line)] bg-white">
+  <Container class="grid items-center gap-14 py-16 lg:grid-cols-[1.04fr_.96fr] lg:gap-16 lg:py-24">
+    <div>
+      <p class="mb-6 inline-flex items-center gap-3 text-xs font-extrabold tracking-[0.18em] text-[var(--color-primary)]">
+        <span class="h-px w-10 bg-[var(--color-accent)]" aria-hidden="true"></span>
+        国家级高新技术企业 · 始于 2012 年
+      </p>
+      <h1 class="max-w-3xl text-[2.15rem] font-extrabold leading-[1.2] text-[var(--color-ink)] sm:text-5xl lg:text-[3.2rem]">
+        锂电池研发制造<br />动力、铅改锂与家用储能
+      </h1>
+      <p class="mt-7 max-w-2xl text-lg leading-8 text-[var(--color-muted)]">
+        14 年制造经验，东莞塘厦 14000+ ㎡ 生产基地，3 条动力产线与 3 条储能产线，为全球 20 多个国家和地区的客户提供 OEM 贴牌代工与 ODM 定制开发。
+      </p>
+      <div class="mt-9 flex flex-col gap-3 sm:flex-row">
+        <Button href="/products/">查看产品中心</Button>
+        <Button href="/contact/" variant="secondary">联系我们</Button>
+      </div>
+      <dl class="mt-10 grid max-w-xl grid-cols-3 gap-6 border-t border-[var(--color-line)] pt-7">
+        <div>
+          <dt class="text-xs font-bold tracking-[0.12em] text-[var(--color-muted)]">日产成品电池组</dt>
+          <dd class="mt-1 text-2xl font-extrabold text-[var(--color-ink)]">2000+ <span class="text-sm font-bold">组</span></dd>
+        </div>
+        <div>
+          <dt class="text-xs font-bold tracking-[0.12em] text-[var(--color-muted)]">日消耗电芯</dt>
+          <dd class="mt-1 text-2xl font-extrabold text-[var(--color-ink)]">30000+ <span class="text-sm font-bold">颗</span></dd>
+        </div>
+        <div>
+          <dt class="text-xs font-bold tracking-[0.12em] text-[var(--color-muted)]">技术专利</dt>
+          <dd class="mt-1 text-2xl font-extrabold text-[var(--color-ink)]">24 <span class="text-sm font-bold">项</span></dd>
+        </div>
+      </dl>
+    </div>
+
+    <div class="relative">
+      <div class="overflow-hidden rounded-[var(--radius-card)] border border-[var(--color-line)] bg-[var(--color-surface)] shadow-[var(--shadow-card)]">
+        <img
+          src="/media/company/hero-factory.webp"
+          alt="智博力东莞塘厦生产基地的锂电池组装车间，工人在流水线上作业"
+          width="1600"
+          height="982"
+          class="aspect-[4/3] w-full object-cover"
+        />
+      </div>
+      <div class="absolute -bottom-6 left-4 max-w-[16rem] rounded-2xl border border-[var(--color-line)] bg-white p-5 shadow-[var(--shadow-card)] sm:left-6">
+        <p class="text-xs font-extrabold tracking-[0.14em] text-[var(--color-primary)]">东莞塘厦生产基地</p>
+        <p class="mt-2 text-sm font-bold leading-6 text-[var(--color-ink)]">花园式独栋厂房 · 14000+ ㎡</p>
+      </div>
+    </div>
+  </Container>
+</section>

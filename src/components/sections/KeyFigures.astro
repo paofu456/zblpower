@@ -1,0 +1,23 @@
+---
+const figures = [
+  { value: "2012", unit: "年", label: "公司成立" },
+  { value: "14", unit: "年", label: "锂电池制造经验" },
+  { value: "14000+", unit: "㎡", label: "厂房面积" },
+  { value: "20+", unit: "个", label: "服务国家和地区" },
+];
+---
+
+<section class="border-b border-[var(--color-line)] bg-[var(--color-surface)]">
+  <div class="mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-10">
+    <dl class="grid grid-cols-2 divide-[var(--color-line)] py-10 sm:divide-x lg:grid-cols-4">
+      {figures.map((item) => (
+        <div class="px-0 py-5 sm:px-8 sm:first:pl-0">
+          <dt class="text-xs font-bold tracking-[0.14em] text-[var(--color-muted)]">{item.label}</dt>
+          <dd class="mt-2 text-3xl font-extrabold text-[var(--color-primary)] sm:text-4xl">
+            {item.value}<span class="ml-1 text-base font-bold text-[var(--color-muted)]">{item.unit}</span>
+          </dd>
+        </div>
+      ))}
+    </dl>
+  </div>
+</section>

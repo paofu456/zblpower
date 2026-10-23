@@ -1,0 +1,85 @@
+---
+import Container from "../ui/Container.astro";
+import SectionHeading from "../ui/SectionHeading.astro";
+
+const capacity = [
+  { label: "动力生产线", value: "3 条" },
+  { label: "储能锂电池生产线", value: "3 条" },
+  { label: "激光焊接机", value: "10 台" },
+  { label: "自动点焊机", value: "4 台" },
+  { label: "电池老化测试点", value: "600+" },
+  { label: "日产成品锂电池组", value: "2000+ 组" },
+];
+
+const credentials = [
+  "国家高新技术企业",
+  "专精特新“小巨人”",
+  "ISO9001 质量认证",
+  "欧盟 EN50604",
+  "北美 UL2054 / UL2271",
+  "技术专利 24 项",
+];
+---
+
+<section class="py-24 sm:py-32">
+  <Container>
+    <div class="grid items-start gap-12 lg:grid-cols-[.95fr_1.05fr] lg:gap-16">
+      <div>
+        <SectionHeading
+          eyebrow="产能布局"
+          title="智能工厂，稳定交付"
+          description="供应链从电芯到保护板均可追溯，核心原材料 24 小时恒温恒湿储存，成品出货前完成老化与综合测试。"
+        />
+        <dl class="mt-10 grid grid-cols-2 gap-x-8 gap-y-6 border-t border-[var(--color-line)] pt-8 sm:grid-cols-3">
+          {capacity.map((item) => (
+            <div>
+              <dt class="text-xs font-bold tracking-[0.1em] text-[var(--color-muted)]">{item.label}</dt>
+              <dd class="mt-1 text-xl font-extrabold text-[var(--color-ink)]">{item.value}</dd>
+            </div>
+          ))}
+        </dl>
+      </div>
+
+      <div class="grid gap-4 sm:grid-cols-2">
+        <img
+          src="/media/company/automation-line.webp"
+          alt="锂电池自动化装配设备与产线工位"
+          width="1200"
+          height="629"
+          loading="lazy"
+          class="aspect-[16/9] w-full rounded-[var(--radius-card)] object-cover sm:col-span-2"
+        />
+        <img
+          src="/media/company/testing-racks.webp"
+          alt="车间内的电池老化测试架与检测工位"
+          width="1100"
+          height="997"
+          loading="lazy"
+          class="aspect-[4/3] w-full rounded-[var(--radius-card)] object-cover"
+        />
+        <img
+          src="/media/company/warehouse.webp"
+          alt="成品仓库中的货架与包装完成的锂电池组"
+          width="1100"
+          height="733"
+          loading="lazy"
+          class="aspect-[4/3] w-full rounded-[var(--radius-card)] object-cover"
+        />
+      </div>
+    </div>
+
+    <div class="mt-16 rounded-[var(--radius-card)] border border-[var(--color-line)] bg-white p-8 sm:p-10">
+      <p class="eyebrow">资质与认证</p>
+      <ul class="mt-6 flex flex-wrap gap-3">
+        {credentials.map((item) => (
+          <li class="rounded-full border border-[var(--color-line)] bg-[var(--color-surface)] px-5 py-2.5 text-sm font-bold text-[var(--color-ink)]">
+            {item}
+          </li>
+        ))}
+      </ul>
+      <p class="mt-6 text-sm leading-7 text-[var(--color-muted)]">
+        证书原件与有效期以客户提供文件为准；如需查看具体认证报告，请联系业务团队索取。
+      </p>
+    </div>
+  </Container>
+</section>

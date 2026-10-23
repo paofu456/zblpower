@@ -1,0 +1,31 @@
+---
+import Container from "../ui/Container.astro";
+
+const offices = [
+  { region: "中国总部", name: "深圳市智博力科技有限公司", note: "深圳 · 龙华" },
+  { region: "法国分部", name: "ZBPOWER France", note: "服务欧洲客户" },
+  { region: "巴基斯坦分部", name: "ZBPOWER PAKISTAN", note: "服务南亚客户" },
+  { region: "中东欧", name: "技术支持与服务中心", note: "区域技术支持" },
+];
+---
+
+<section class="border-y border-[var(--color-line)] bg-[var(--color-ink)] py-24 text-white sm:py-32">
+  <Container>
+    <div class="max-w-3xl">
+      <p class="text-xs font-extrabold tracking-[0.18em] text-[var(--color-accent)]">全球网络与服务</p>
+      <h2 class="mt-4 text-3xl font-extrabold leading-tight sm:text-5xl">产品已服务全球 20 多个国家和地区</h2>
+      <p class="mt-5 text-lg leading-8 text-white/70">
+        立足东莞制造基地，同步构筑覆盖亚洲、欧洲的全球化服务网络，为海外经销商与品牌方提供本地化的技术响应与交付支持。
+      </p>
+    </div>
+    <div class="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      {offices.map((office) => (
+        <div class="rounded-[var(--radius-card)] border border-white/12 bg-white/[0.06] p-6">
+          <p class="text-xs font-extrabold tracking-[0.14em] text-[var(--color-accent)]">{office.region}</p>
+          <p class="mt-3 text-base font-extrabold leading-6">{office.name}</p>
+          <p class="mt-2 text-sm text-white/60">{office.note}</p>
+        </div>
+      ))}
+    </div>
+  </Container>
+</section>

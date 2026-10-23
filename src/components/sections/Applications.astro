@@ -1,0 +1,70 @@
+---
+import Container from "../ui/Container.astro";
+import SectionHeading from "../ui/SectionHeading.astro";
+
+const scenes = [
+  {
+    title: "电动滑板车与两轮车",
+    note: "铅改锂电池应用场景",
+    image: "/media/scenes/e-scooter.webp",
+    alt: "夜间骑行的电动滑板车，踏板处安装电池组",
+  },
+  {
+    title: "高尔夫球车",
+    note: "铅改锂电池应用场景",
+    image: "/media/scenes/golf-cart.webp",
+    alt: "草坪上的高尔夫球车，用于球场与观光接驳",
+  },
+  {
+    title: "电动轮椅",
+    note: "动力锂电池应用场景",
+    image: "/media/scenes/wheelchair.webp",
+    alt: "户外使用的电动轮椅，配备锂电池动力系统",
+  },
+  {
+    title: "洗地车",
+    note: "铅改锂电池应用场景",
+    image: "/media/scenes/floor-scrubber.webp",
+    alt: "工业清洁用的驾驶式洗地车",
+  },
+  {
+    title: "家庭储能",
+    note: "家用储能电池应用场景",
+    image: "/media/scenes/home-exterior.webp",
+    alt: "带有光伏与储能系统的独栋住宅外观",
+  },
+];
+---
+
+<section class="border-y border-[var(--color-line)] bg-white py-24 sm:py-32">
+  <Container>
+    <SectionHeading
+      eyebrow="应用场景"
+      title="同一套锂电能力，适配多种用电设备"
+      description="从短途出行到家庭储能，产品按应用场景组织，便于采购方直接对照自己的设备类型。"
+    />
+    <div class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      {scenes.map((scene) => (
+        <article class="group overflow-hidden rounded-[var(--radius-card)] border border-[var(--color-line)] bg-white transition duration-300 hover:-translate-y-1 hover:shadow-[var(--shadow-card)]">
+          <img
+            src={scene.image}
+            alt={scene.alt}
+            width="760"
+            height="520"
+            loading="lazy"
+            class="aspect-[4/3] w-full object-cover"
+          />
+          <div class="p-6">
+            <h3 class="text-lg font-extrabold text-[var(--color-ink)]">{scene.title}</h3>
+            <p class="mt-2 text-sm font-bold text-[var(--color-primary)]">{scene.note}</p>
+          </div>
+        </article>
+      ))}
+      <article class="flex flex-col justify-center rounded-[var(--radius-card)] border border-dashed border-[var(--color-line)] bg-[var(--color-surface)] p-8">
+        <p class="text-sm font-bold text-[var(--color-muted)]">还有别的设备类型？</p>
+        <p class="mt-2 text-lg font-extrabold leading-7 text-[var(--color-ink)]">告诉我们设备参数与用量，评估 ODM 定制方案。</p>
+        <a href="/contact/" class="mt-4 text-sm font-bold text-[var(--color-primary)]">联系业务团队 →</a>
+      </article>
+    </div>
+  </Container>
+</section>

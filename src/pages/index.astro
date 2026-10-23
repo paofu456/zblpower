@@ -1,0 +1,28 @@
+---
+import Applications from "../components/sections/Applications.astro";
+import Capability from "../components/sections/Capability.astro";
+import CompanyIntro from "../components/sections/CompanyIntro.astro";
+import ContactCta from "../components/sections/ContactCta.astro";
+import FeaturedProducts from "../components/sections/FeaturedProducts.astro";
+import GlobalReach from "../components/sections/GlobalReach.astro";
+import Hero from "../components/sections/Hero.astro";
+import KeyFigures from "../components/sections/KeyFigures.astro";
+import company from "../data/company.json";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { makePageTitle } from "../lib/seo";
+---
+
+<BaseLayout
+  title={makePageTitle()}
+  description={`${company.name}专注锂电池研发制造，覆盖动力锂电、铅改锂电池与家用储能电池三大业务板块，服务全球 20 多个国家和地区客户。`}
+  image="/media/company/hero-factory.webp"
+>
+  <Hero />
+  <KeyFigures />
+  <CompanyIntro />
+  <FeaturedProducts />
+  <Applications />
+  <Capability />
+  <GlobalReach />
+  <ContactCta />
+</BaseLayout>
