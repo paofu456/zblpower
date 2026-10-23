@@ -16,7 +16,7 @@ specifications:
   - label: 供应方式
     value: 支持 OEM 贴牌代工与 ODM 定制开发
 seo:
-  title: 动力锂电池 | 电动自行车与电动摩托车电池
+  title: 动力锂电池 | 电动自行车与电动摩托车电池 | 智博力
   description: 智博力动力锂电池面向电动自行车与电动摩托车，具备高能量密度、长续航与高安全性能，支持 OEM 贴牌与 ODM 定制。
 ---
 

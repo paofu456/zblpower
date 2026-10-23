@@ -6,18 +6,18 @@ import { makePageTitle } from "../lib/seo";
 ---
 
 <BaseLayout
-  title={makePageTitle("Page not found")}
-  description="The requested page could not be found. Return to the company website home page or browse the product catalog."
+  title={makePageTitle("页面未找到")}
+  description="你访问的页面不存在或已更改地址。可以返回智博力官网首页，或浏览动力锂电池、铅改锂电池与家用储能电池产品。"
   noindex={true}
 >
   <section class="py-28 sm:py-40">
     <Container class="text-center">
       <p class="text-8xl font-extrabold text-[var(--color-primary)] sm:text-9xl">404</p>
-      <h1 class="mt-6 text-4xl font-extrabold sm:text-6xl">This page is off the production line.</h1>
-      <p class="mx-auto mt-5 max-w-xl text-lg text-[var(--color-muted)]">The URL may have changed or the page may no longer exist.</p>
+      <h1 class="mt-6 text-4xl font-extrabold sm:text-6xl">这个页面不在了</h1>
+      <p class="mx-auto mt-5 max-w-xl text-lg text-[var(--color-muted)]">地址可能已变更，或者页面已被移除。可以回到首页，或直接查看产品中心。</p>
       <div class="mt-9 flex flex-col justify-center gap-3 sm:flex-row">
-        <Button href="/">Return home</Button>
-        <Button href="/products/" variant="secondary">Browse products</Button>
+        <Button href="/">返回首页</Button>
+        <Button href="/products/" variant="secondary">查看产品中心</Button>
       </div>
     </Container>
   </section>
